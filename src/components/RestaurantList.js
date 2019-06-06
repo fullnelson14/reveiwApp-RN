@@ -12,29 +12,29 @@ import ListRow from "./ListRow";
 import { css } from "@emotion/native";
 
 const restaurants = [
-  { name: "Bobs burgers", address: "123 Easy Street" },
-  { name: "Meemah Cafe", address: "456 Brotha Blvd" },
-  { name: "Muffin Man", address: "897 Dreary Ln" },
-  { name: "BIRD", address: "654 Yo St" },
-  { name: "Yo Street", address: "654 Yo St" },
-  { name: "Grubs", address: "123 Easy Street" },
-  { name: "Lolo's", address: "456 Brotha Blvd" },
-  { name: "Big Poppas", address: "897 Dreary Ln" },
-  { name: "Get it cafe", address: "654 Yo St" },
-  { name: "YIP", address: "123 Easy Street" },
-  { name: "Growl", address: "456 Brotha Blvd" },
-  { name: "Arcanine", address: "897 Dreary Ln" },
-  { name: "PETS", address: "654 Yo St" },
+  { rating: 3, name: "Bobs burgers", address: "123 Easy Street" },
+  { rating: 4.5, name: "Meemah Cafe", address: "456 Brotha Blvd" },
+  { rating: 5, name: "Muffin Man", address: "897 Dreary Ln" },
+  { rating: 1, name: "BIRD", address: "654 Yo St" },
+  { rating: 3, name: "Yo Street", address: "654 Yo St" },
+  { rating: 2, name: "Grubs", address: "123 Easy Street" },
+  { rating: 3.5, name: "Lolo's", address: "456 Brotha Blvd" },
+  { rating: 3, name: "Big Poppas", address: "897 Dreary Ln" },
+  { rating: 3, name: "Get it cafe", address: "654 Yo St" },
+  { rating: 3, name: "YIP", address: "123 Easy Street" },
+  { rating: 3, name: "Growl", address: "456 Brotha Blvd" },
+  { rating: 3, name: "Arcanine", address: "897 Dreary Ln" },
+  { rating: 3, name: "PETS", address: "654 Yo St" },
+  { rating: 3, name: "YTR", address: "897 Dreary Ln" },
 
-  { name: "YTR", address: "897 Dreary Ln" },
-  { name: "HGF", address: "654 Yo St" },
-  { name: "YTP", address: "123 Easy Street" },
-  { name: "Jonah J Jameson", address: "456 Brotha Blvd" },
-  { name: "XYON", address: "897 Dreary Ln" },
-  { name: "GRILLEM", address: "654 Yo St" },
-  { name: "Pops Bops", address: "654 Yo St" },
-  { name: "Yo Mama", address: "654 Yo St" },
-  { name: "Thats uh thats a mamma joke", address: "654 Yo St" }
+  { rating: 3, name: "HGF", address: "654 Yo St" },
+  { rating: 3, name: "YTP", address: "123 Easy Street" },
+  { rating: 3.5, name: "Jonah J Jameson", address: "456 Brotha Blvd" },
+  { rating: 4.5, name: "XYON", address: "897 Dreary Ln" },
+  { rating: 3, name: "GRILLEM", address: "654 Yo St" },
+  { rating: 3, name: "Pops Bops", address: "654 Yo St" },
+  { rating: 2, name: "Yo Mama", address: "654 Yo St" },
+  { rating: 4, name: "Thats uh thats a mamma joke", address: "654 Yo St" }
 ];
 
 export default class RestaurantList extends Component {
@@ -84,7 +84,13 @@ export default class RestaurantList extends Component {
           })}
           renderItem={({ item, index }) => {
             return (
-              <ListRow index={index} name={item.name} address={item.address} />
+              <ListRow
+                index={index}
+                name={item.name}
+                address={item.address}
+                rating={item.rating}
+                nav={this.props.nav}
+              />
             );
           }}
           keyExtractor={item => item.name}

@@ -1,4 +1,7 @@
 {
   "name": "reviewApp",
-  "displayName": "reviewApp"
+  "displayName": "reviewApp",
+  "androidStatusBar": {
+    "backgroundColor": "#000000"
+  }
 }

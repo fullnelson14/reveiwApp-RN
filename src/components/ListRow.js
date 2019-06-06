@@ -4,10 +4,10 @@ import {
   StyleSheet,
   View,
   TouchableHighlight,
-  TouchableOpacity,
-  TouchableWithoutFeedback
+  Image
 } from "react-native";
 import styled, { css } from "@emotion/native";
+import Stars from "components/Stars";
 
 const RestaurantInfoDiv = styled.View`
   padding: 10px;
@@ -30,7 +30,14 @@ export default class ListRow extends Component {
   };
 
   infoPressed = () => {
-    this.setState({ showInfo: !this.state.showInfo });
+    //this.setState({ showInfo: !this.state.showInfo });
+    this.props.nav.navigate("Info", {
+      place: {
+        name: this.props.name,
+        address: this.props.address,
+        rating: this.props.rating
+      }
+    });
   };
 
   render() {
@@ -46,7 +53,7 @@ export default class ListRow extends Component {
             onPress={this.infoPressed}
           >
             <View style={styles.number}>
-              <Text>{this.props.index + 1}</Text>
+              <Stars rating={this.props.rating} />
             </View>
           </TouchableHighlight>
           <View style={styles.Shopinfo}>
@@ -64,13 +71,6 @@ export default class ListRow extends Component {
               </Text>
             </CustomButton>
           </View>
-        </View>
-        <View>
-          {this.state.showInfo && (
-            <RestaurantInfoDiv>
-              <Text>Restaurant Info</Text>
-            </RestaurantInfoDiv>
-          )}
         </View>
       </View>
     );
@@ -97,6 +97,7 @@ const styles = StyleSheet.create({
   },
   number: {
     flex: 1,
+    flexDirection: "row",
     alignItems: "center",
     justifyContent: "center",
     minWidth: 50
